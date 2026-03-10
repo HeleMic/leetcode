@@ -1,0 +1,44 @@
+# --- Dependencies ---
+node_modules/
+.pnp.js
+.yarn/
+
+# --- Build & output ---
+dist/
+build/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+coverage/
+storybook-static/
+
+# --- Generated files ---
+*.min.js
+*.min.css
+*.bundle.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# --- Cache ---
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+
+# --- Secrets & env ---
+.env
+.env.*
+!.env.example
+
+# --- System ---
+.DS_Store
+Thumbs.db
+
+# --- Don't touch it ---
+*.svg          # spesso ottimizzati con svgo, prettier li può rovinare
+*.snap         # jest snapshots — gestiti dai test
+*.pb.go        # protobuf generati
+*_generated.*

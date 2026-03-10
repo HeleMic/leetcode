@@ -1,0 +1,28 @@
+if ! npx --no-install -- commitlint --edit "$1"; then
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "❌ Invalid commit message"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "📌 Format:"
+    echo "  <type>(<scope>): <subject>"
+    echo ""
+    echo "📌 Allowed types:"
+    echo "  chore | ci | docs | feat | fix | perf | refactor | revert | style | test | wip"
+    echo ""
+    echo "📌 Rules:"
+    echo "  - header max length: 100 chars"
+    echo "  - subject max length: 72 chars"
+    echo "  - body line max length: 200 chars"
+    echo "  - footer line max length: 100 chars"
+    echo "  - multiple scopes separated by ','"
+    echo ""
+    echo "📌 Example:"
+    echo "  feat(user): add login with jwt"
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+
+    exit 1
+fi
+
+exit 0
