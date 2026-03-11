@@ -7,8 +7,9 @@ A collection of my solutions to LeetCode problems, organized by problem number.
 ```text
 problems/
 └── XXXX-problem-name/
+    ├── README.md     # problem description
     ├── solution.py   # solution with time & space complexity
-    └── notes.md      # (optional) approach explanation
+    └── tests.json    # test cases for the runner
 ```
 
 ## Solutions
@@ -17,18 +18,49 @@ problems/
 | -------------------------------------- | ------- | ---------- | ----------------- |
 | [1](problems/0001-two-sum/solution.py) | Two Sum | Easy       | Array, Hash Table |
 
-## Running a Solution
-
-```bash
-python problems/0001-two-sum/solution.py
-```
-
 ## Running Tests
 
 ```bash
 # Run all tests
-pytest
+python3 run_tests.py
 
-# Run tests for a specific problem
-pytest problems/0001-two-sum/
+# Run tests for a specific problem (by number)
+python3 run_tests.py 1
+python3 run_tests.py 0042
 ```
+
+## Adding Test Cases
+
+Each problem folder contains a `tests.json` file. Add new cases to the `cases`
+array:
+
+```json
+{
+  "method": "twoSum",
+  "normalizer": "sort",
+  "cases": [
+    {
+      "label": "Example 1",
+      "args": [[2, 7, 11, 15], 9],
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+**Fields:**
+
+- `"method"` — name of the method to call on the `Solution` class
+- `"normalizer"` *(optional)* — transformation applied to both result and
+  expected before comparing. Use this when the problem allows multiple valid
+  outputs (e.g. *"return the answer in any order"*):
+
+  | Value | Behaviour |
+  |---|---|
+  | `"sort"` | `sorted(result)` — for lists where order doesn't matter |
+  | `"sort_nested"` | sort a list of lists at both levels |
+  | `"set"` | `frozenset(result)` — unordered, no duplicates |
+
+- `"label"` *(optional)* — human-readable name shown in the test output
+  (defaults to `"Case N"`)
+- `"args"` — positional arguments matching the method signature exactly

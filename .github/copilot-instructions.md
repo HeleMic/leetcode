@@ -25,7 +25,8 @@ and never outline a step-by-step algorithm that amounts to a solution.
 problems/
 └── XXXX-problem-name/      # zero-padded 4-digit number + kebab-case name
     ├── README.md            # problem description (see format below)
-    └── solution.py          # solution code + inline tests
+    ├── solution.py          # solution code + inline tests
+    └── tests.json           # test cases for the test runner
 ```
 
 The root `README.md` contains an index table of all solved problems and must be
@@ -113,3 +114,32 @@ Rows must be sorted by problem number in ascending order.
 | File    | always `solution.py` / `README.md`     | —                          |
 | Class   | always `Solution`                      | —                          |
 | Method  | camelCase, matching LeetCode signature | `maxProfit`                |
+
+## tests.json Format
+
+Each problem folder must include a `tests.json` for the test runner
+(`run_tests.py`):
+
+```json
+{
+  "method": "<LeetCode method name>",
+  "normalizer": "sort",
+  "cases": [
+    {
+      "label": "Human-readable description",
+      "args": [<positional arg1>, <positional arg2>],
+      "expected": <expected return value>
+    }
+  ]
+}
+```
+
+- `"label"` is optional but recommended
+- `"normalizer"` is optional; applies a transform to both result and expected
+  before comparing:
+  - `"sort"` — `sorted(result)` (use when output order is non-deterministic,
+    e.g. "return in any order")
+  - `"sort_nested"` — sort a list of lists (any order at both levels)
+  - `"set"` — `frozenset(result)` (unordered, no duplicates)
+- `"args"` is always an array of positional arguments matching the method
+  signature
