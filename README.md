@@ -14,9 +14,9 @@ problems/
 
 ## Solutions
 
-| #                                      | Title   | Difficulty | Topics            |
-| -------------------------------------- | ------- | ---------- | ----------------- |
-| [1](problems/0001-two-sum/solution.py) | Two Sum | Easy       | Array, Hash Table |
+| #                                      | Title                                        | Difficulty | Topics            |
+| -------------------------------------- | -------------------------------------------- | ---------- | ----------------- |
+| [1](problems/0001-two-sum/solution.py) | [Two Sum](problems/0001-two-sum/solution.py) | Easy       | Array, Hash Table |
 
 ## Running Tests
 
@@ -51,16 +51,16 @@ array:
 **Fields:**
 
 - `"method"` — name of the method to call on the `Solution` class
-- `"normalizer"` *(optional)* — transformation applied to both result and
+- `"normalizer"` _(optional)_ — transformation applied to both result and
   expected before comparing. Use this when the problem allows multiple valid
-  outputs (e.g. *"return the answer in any order"*):
+  outputs (e.g. _"return the answer in any order"_):
 
-  | Value | Behaviour |
-  |---|---|
-  | `"sort"` | `sorted(result)` — for lists where order doesn't matter |
-  | `"sort_nested"` | sort a list of lists at both levels |
-  | `"set"` | `frozenset(result)` — unordered, no duplicates |
+  | Value           | Behaviour                                               |
+  | --------------- | ------------------------------------------------------- |
+  | `"sort"`        | `sorted(result)` — for lists where order doesn't matter |
+  | `"sort_nested"` | sort a list of lists at both levels                     |
+  | `"set"`         | `frozenset(result)` — unordered, no duplicates          |
 
-- `"label"` *(optional)* — human-readable name shown in the test output
+- `"label"` _(optional)_ — human-readable name shown in the test output
   (defaults to `"Case N"`)
 - `"args"` — positional arguments matching the method signature exactly

@@ -54,12 +54,7 @@ from typing import List
 
 class Solution:
     def exampleMethod(self, nums: List[int]) -> int:
-        """
-        Time:  O(n)
-        Space: O(1)
-        """
-        ...
-
+        pass
 
 if __name__ == "__main__":
     solution = Solution()
@@ -100,8 +95,9 @@ Whenever a new problem is added, append a row to the solutions table in the root
 `README.md`:
 
 ```markdown
-| [N](problems/XXXX-problem-name/solution.py) | Title | Easy/Medium/Hard |
-Topic1, Topic2 |
+| [N](problems/XXXX-problem-name/solution.py) |
+[Title](problems/XXXX-problem-name/solution.py) | Easy/Medium/Hard | Topic1,
+Topic2 |
 ```
 
 Rows must be sorted by problem number in ascending order.
