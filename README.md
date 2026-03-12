@@ -5,12 +5,35 @@ A collection of my solutions to LeetCode problems, organized by problem number.
 ## Structure
 
 ```text
+common/               # shared data structures (ListNode, TreeNode)
 problems/
 └── XXXX-problem-name/
     ├── README.md     # problem description
     ├── solution.py   # solution with time & space complexity
     └── tests.json    # test cases for the runner
 ```
+
+## Shared Data Structures
+
+The `common/` package provides implementations for LeetCode-specific data
+structures like `ListNode` and `TreeNode`.
+
+### Usage in Solutions
+
+When solving a problem that uses these structures (e.g., Linked Lists or Trees),
+import them from the `common` package:
+
+```python
+from common import ListNode        # or TreeNode
+```
+
+These classes include helper methods:
+
+- `from_list(values: list)`: Creates a linked list or binary tree from a list
+- `to_list()`: Serializes the structure back into a list
+
+The repository is configured to make `common` importable anywhere if you have
+installed it in editable mode via `pip install -e .`.
 
 ## Solutions
 
