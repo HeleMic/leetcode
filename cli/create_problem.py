@@ -38,9 +38,8 @@ TYPE_MAP = {
     "character": "str",
     "character[]": "List[str]",
     "ListNode": "Optional[ListNode]",
-    "TreeNode": "Optional[TreeNode]",
 }
-COMMON_TYPES = {"ListNode", "TreeNode"}
+COMMON_TYPES = {"ListNode"}
 
 
 # ── HTML → Markdown ───────────────────────────────────────────────────────────

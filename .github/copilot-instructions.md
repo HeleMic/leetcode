@@ -22,11 +22,20 @@ and never outline a step-by-step algorithm that amounts to a solution.
 ## Project Structure
 
 ```text
+common/                      # shared data structures (import from here)
+├── list_node.py             # ListNode  — linked-list problems
+└── tree_node.py             # TreeNode  — binary tree problems
 problems/
 └── XXXX-problem-name/      # zero-padded 4-digit number + kebab-case name
     ├── README.md            # problem description (see format below)
     ├── solution.py          # solution code + inline tests
     └── tests.json           # test cases for the test runner
+```
+
+When a problem uses `ListNode` or `TreeNode`, import them from `common`:
+
+```python
+from common import ListNode        # or TreeNode, or both
 ```
 
 The root `README.md` contains an index table of all solved problems and must be
@@ -111,15 +120,31 @@ Rows must be sorted by problem number in ascending order.
 | Class   | always `Solution`                      | —                          |
 | Method  | camelCase, matching LeetCode signature | `maxProfit`                |
 
+## CLI — `leet`
+
+All tooling is accessed via the `leet` CLI at the repo root:
+
+```bash
+# Scaffold a new problem from its LeetCode URL
+python3 leet create:problem https://leetcode.com/problems/two-sum/
+
+# Run tests for all problems
+python3 leet test
+
+# Run tests for a specific problem (by number)
+python3 leet test 42
+```
+
 ## tests.json Format
 
-Each problem folder must include a `tests.json` for the test runner
-(`run_tests.py`):
+Each problem folder must include a `tests.json` for `python3 leet test`:
 
 ```json
 {
   "method": "<LeetCode method name>",
   "normalizer": "sort",
+  "param_types": ["ListNode", "ListNode"],
+  "return_type": "ListNode",
   "cases": [
     {
       "label": "Human-readable description",
@@ -137,5 +162,10 @@ Each problem folder must include a `tests.json` for the test runner
     e.g. "return in any order")
   - `"sort_nested"` — sort a list of lists (any order at both levels)
   - `"set"` — `frozenset(result)` (unordered, no duplicates)
+- `"param_types"` is optional; list of raw LeetCode type strings per argument.
+  When present, the runner converts plain-list args to `ListNode`/`TreeNode`
+  using `from_list()`. Generated automatically by `leet create:problem`.
+- `"return_type"` is optional; raw LeetCode return type. When present, the
+  runner calls `.to_list()` on the result before comparing with `expected`.
 - `"args"` is always an array of positional arguments matching the method
   signature
