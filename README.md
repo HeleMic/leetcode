@@ -14,19 +14,38 @@ problems/
 
 ## Solutions
 
-| #                                      | Title                                        | Difficulty | Topics            |
-| -------------------------------------- | -------------------------------------------- | ---------- | ----------------- |
-| [1](problems/0001-two-sum/solution.py) | [Two Sum](problems/0001-two-sum/solution.py) | Easy       | Array, Hash Table |
+| #                                              | Title                                                        | Difficulty | Topics                       |
+| ---------------------------------------------- | ------------------------------------------------------------ | ---------- | ---------------------------- |
+| [1](problems/0001-two-sum/solution.py)         | [Two Sum](problems/0001-two-sum/solution.py)                 | Easy       | Array, Hash Table            |
+| [2](problems/0002-add-two-numbers/solution.py) | [Add Two Numbers](problems/0002-add-two-numbers/solution.py) | Medium     | Linked List, Math, Recursion |
+
+## Adding a New Problem
+
+```bash
+python3 leet create:problem https://leetcode.com/problems/two-sum/
+```
+
+This will automatically:
+
+- Create `problems/XXXX-problem-name/` with `README.md`, `solution.py`, and
+  `tests.json`
+- Populate the README with the problem description, examples, and constraints
+- Populate `tests.json` with the official example inputs (fill in `expected`
+  values manually)
+- Add the problem to the table above
+
+After running, fill in the `expected` values in `tests.json` and solve the
+problem in `solution.py`.
 
 ## Running Tests
 
 ```bash
 # Run all tests
-python3 run_tests.py
+python3 leet test
 
 # Run tests for a specific problem (by number)
-python3 run_tests.py 1
-python3 run_tests.py 0042
+python3 leet test 1
+python3 leet test 42
 ```
 
 ## Adding Test Cases
@@ -61,6 +80,14 @@ array:
   | `"sort_nested"` | sort a list of lists at both levels                     |
   | `"set"`         | `frozenset(result)` — unordered, no duplicates          |
 
+- `"param_types"` _(optional)_ — list of raw LeetCode type strings (e.g.
+  `["ListNode", "ListNode"]`). When present, the runner converts each `args`
+  value from a plain list to the appropriate object (using
+  `ListNode.from_list()` or `TreeNode.from_list()`). Generated automatically by
+  `leet create:problem` for problems that use linked-list or tree nodes.
+- `"return_type"` _(optional)_ — raw LeetCode return type (e.g. `"ListNode"`).
+  When present, the runner serializes the method's return value back to a plain
+  list before comparing with `expected`.
 - `"label"` _(optional)_ — human-readable name shown in the test output
   (defaults to `"Case N"`)
 - `"args"` — positional arguments matching the method signature exactly

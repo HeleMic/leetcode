@@ -1,0 +1,69 @@
+{
+  "method": "addTwoNumbers",
+  "param_types": ["ListNode", "ListNode"],
+  "return_type": "ListNode",
+  "cases": [
+    {
+      "label": "Example 1 — 342 + 465 = 807",
+      "args": [
+        [2, 4, 3],
+        [5, 6, 4]
+      ],
+      "expected": [7, 0, 8]
+    },
+    {
+      "label": "Example 2 — 0 + 0 = 0",
+      "args": [[0], [0]],
+      "expected": [0]
+    },
+    {
+      "label": "Example 3 — 9999999 + 9999 = 10009998",
+      "args": [
+        [9, 9, 9, 9, 9, 9, 9],
+        [9, 9, 9, 9]
+      ],
+      "expected": [8, 9, 9, 9, 0, 0, 0, 1]
+    },
+    {
+      "label": "Single digits, no carry — 1 + 2 = 3",
+      "args": [[1], [2]],
+      "expected": [3]
+    },
+    {
+      "label": "Single digits with carry — 5 + 5 = 10",
+      "args": [[5], [5]],
+      "expected": [0, 1]
+    },
+    {
+      "label": "Different lengths — 99 + 1 = 100",
+      "args": [[9, 9], [1]],
+      "expected": [0, 0, 1]
+    },
+    {
+      "label": "One operand is zero — 123 + 0 = 123",
+      "args": [[3, 2, 1], [0]],
+      "expected": [3, 2, 1]
+    },
+    {
+      "label": "Carry propagates through — 999 + 1 = 1000",
+      "args": [[9, 9, 9], [1]],
+      "expected": [0, 0, 0, 1]
+    },
+    {
+      "label": "Large numbers same length — 9999 + 9999 = 19998",
+      "args": [
+        [9, 9, 9, 9],
+        [9, 9, 9, 9]
+      ],
+      "expected": [8, 9, 9, 9, 1]
+    },
+    {
+      "label": "No carry at any position — 123 + 456 = 579",
+      "args": [
+        [3, 2, 1],
+        [6, 5, 4]
+      ],
+      "expected": [9, 7, 5]
+    }
+  ]
+}
