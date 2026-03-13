@@ -41,6 +41,7 @@ installed it in editable mode via `pip install -e .`.
 | ---------------------------------------------- | ------------------------------------------------------------ | ---------- | ---------------------------- |
 | [1](problems/0001-two-sum/solution.py)         | [Two Sum](problems/0001-two-sum/solution.py)                 | Easy       | Array, Hash Table            |
 | [2](problems/0002-add-two-numbers/solution.py) | [Add Two Numbers](problems/0002-add-two-numbers/solution.py) | Medium     | Linked List, Math, Recursion |
+| [3](problems/0003-longest-substring-without-repeating-characters/solution.py) | [Longest Substring Without Repeating Characters](problems/0003-longest-substring-without-repeating-characters/solution.py) | Medium | Hash Table, String, Sliding Window |
 
 ## Adding a New Problem
 

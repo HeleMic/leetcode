@@ -1,0 +1,55 @@
+{
+  "method": "lengthOfLongestSubstring",
+  "cases": [
+    {
+      "label": "Example 1 — abcabcbb",
+      "args": ["abcabcbb"],
+      "expected": 3
+    },
+    {
+      "label": "Example 2 — bbbbb",
+      "args": ["bbbbb"],
+      "expected": 1
+    },
+    {
+      "label": "Example 3 — pwwkew",
+      "args": ["pwwkew"],
+      "expected": 3
+    },
+    {
+      "label": "Empty string",
+      "args": [""],
+      "expected": 0
+    },
+    {
+      "label": "Single character",
+      "args": ["a"],
+      "expected": 1
+    },
+    {
+      "label": "All unique characters",
+      "args": ["abcdef"],
+      "expected": 6
+    },
+    {
+      "label": "Spaces and symbols",
+      "args": ["a b c!"],
+      "expected": 4
+    },
+    {
+      "label": "Double character at start",
+      "args": ["aab"],
+      "expected": 2
+    },
+    {
+      "label": "Double character at end",
+      "args": ["abb"],
+      "expected": 2
+    },
+    {
+      "label": "Long string with repetitive patterns",
+      "args": ["dvdf"],
+      "expected": 3
+    }
+  ]
+}
