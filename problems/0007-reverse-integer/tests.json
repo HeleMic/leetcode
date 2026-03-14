@@ -1,0 +1,55 @@
+{
+  "method": "reverse",
+  "cases": [
+    {
+      "label": "Example 1 — positive number",
+      "args": [123],
+      "expected": 321
+    },
+    {
+      "label": "Example 2 — negative number",
+      "args": [-123],
+      "expected": -321
+    },
+    {
+      "label": "Example 3 — trailing zero",
+      "args": [120],
+      "expected": 21
+    },
+    {
+      "label": "Single digit",
+      "args": [5],
+      "expected": 5
+    },
+    {
+      "label": "Zero",
+      "args": [0],
+      "expected": 0
+    },
+    {
+      "label": "Negative single digit",
+      "args": [-9],
+      "expected": -9
+    },
+    {
+      "label": "Multiple trailing zeros",
+      "args": [1000],
+      "expected": 1
+    },
+    {
+      "label": "Palindrome",
+      "args": [1221],
+      "expected": 1221
+    },
+    {
+      "label": "Overflow — positive (2^31 - 1 reversed overflows)",
+      "args": [2147483647],
+      "expected": 0
+    },
+    {
+      "label": "Overflow — negative (-2^31 reversed overflows)",
+      "args": [-2147483648],
+      "expected": 0
+    }
+  ]
+}

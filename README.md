@@ -10,6 +10,7 @@ A collection of my solutions to LeetCode problems, organized by problem number.
 | [2](problems/0002-add-two-numbers/solution.py)                                | [Add Two Numbers](problems/0002-add-two-numbers/solution.py)                                                               | Medium     | Linked List, Math, Recursion             |
 | [3](problems/0003-longest-substring-without-repeating-characters/solution.py) | [Longest Substring Without Repeating Characters](problems/0003-longest-substring-without-repeating-characters/solution.py) | Medium     | Hash Table, String, Sliding Window       |
 | [4](problems/0004-median-of-two-sorted-arrays/solution.py)                    | [Median of Two Sorted Arrays](problems/0004-median-of-two-sorted-arrays/solution.py)                                       | Hard       | Array, Binary Search, Divide and Conquer |
+| [7](problems/0007-reverse-integer/solution.py)                                | [Reverse Integer](problems/0007-reverse-integer/solution.py)                                                               | Medium     | Math                                     |
 
 ## Structure
 
