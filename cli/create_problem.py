@@ -3,6 +3,7 @@
 import json
 import re
 import ssl
+import subprocess
 import urllib.request
 from html import unescape
 from html.parser import HTMLParser
@@ -260,27 +261,54 @@ def _update_root_readme(q: dict, folder_name: str) -> None:
     num = int(q["questionId"])
     path = f"problems/{folder_name}/solution.py"
     topics = ", ".join(t["name"] for t in q["topicTags"])
-    new_row = f"| [{num}]({path}) | [{q['title']}]({path}) | {q['difficulty']} | {topics} |"
+    new_cells = [f"[{num}]({path})", f"[{q['title']}]({path})", q["difficulty"], topics]
 
     lines = ROOT_README.read_text().splitlines()
-    insert_at = None
-    for i, line in enumerate(lines):
-        if re.match(r"\|\s*\[?\d", line):
-            row_num = int(re.search(r"\[?(\d+)\]?", line).group(1))
-            if row_num == num:
-                print(f"  Problem #{num} already in README — skipping.")
-                return
-            if row_num > num and insert_at is None:
-                insert_at = i
-    if insert_at is None:
-        for i in range(len(lines) - 1, -1, -1):
-            if re.match(r"\|\s*\[?\d", lines[i]):
-                insert_at = i + 1
-                break
-    if insert_at is None:
+
+    # Locate the header row (must start with "| #")
+    header_idx = next(
+        (i for i, ln in enumerate(lines) if re.match(r"\|\s*#\s*\|", ln)), None
+    )
+    if header_idx is None:
         print("  WARNING: Could not locate table in README — skipping.")
         return
-    lines.insert(insert_at, new_row)
+
+    sep_idx = header_idx + 1
+    header_cells = [c.strip() for c in lines[header_idx].strip("|").split("|")]
+
+    # Collect existing data rows (consecutive rows after sep that start with a link)
+    data_rows: list[tuple[int, list[str]]] = []
+    i = sep_idx + 1
+    while i < len(lines) and re.match(r"\|\s*\[?\d", lines[i]):
+        cells = [c.strip() for c in lines[i].strip("|").split("|")]
+        row_num = int(re.search(r"\[?(\d+)\]?", cells[0]).group(1))
+        if row_num == num:
+            print(f"  Problem #{num} already in README — skipping.")
+            return
+        data_rows.append((row_num, cells))
+        i += 1
+    end_idx = i
+
+    # Insert new row and sort by problem number
+    data_rows.append((num, new_cells))
+    data_rows.sort(key=lambda x: x[0])
+
+    # Calculate column widths from all rows (including header)
+    all_rows = [header_cells] + [cells for _, cells in data_rows]
+    col_widths = [max(len(row[j]) for row in all_rows) for j in range(len(header_cells))]
+
+    def fmt_row(cells: list[str]) -> str:
+        parts = [f" {cells[j].ljust(col_widths[j])} " for j in range(len(cells))]
+        return "|" + "|".join(parts) + "|"
+
+    sep_row = "|" + "|".join(f" {'-' * w} " for w in col_widths) + "|"
+
+    formatted = (
+        [fmt_row(header_cells), sep_row]
+        + [fmt_row(cells) for _, cells in data_rows]
+    )
+    lines[header_idx:end_idx] = formatted
+
     ROOT_README.write_text("\n".join(lines) + "\n")
     print("  Updated README.md")
 
@@ -321,6 +349,13 @@ def run(args: list[str]) -> None:
     print(f"  Created tests.json   ({n} example case{'s' if n != 1 else ''} — fill in 'expected')")
 
     _update_root_readme(q, folder_name)
+
+    # Format the READMEs
+    try:
+        subprocess.run(["npx", "markdownlint-cli", "--fix", str(problem_dir / "README.md")])
+        subprocess.run(["npx", "markdownlint-cli", "--fix", str(ROOT_README)])
+    except Exception:
+        pass
 
     print(f"\nDone! Next steps:")
     print(f"  1. Fill in 'expected' values in  problems/{folder_name}/tests.json")
