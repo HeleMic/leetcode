@@ -2,6 +2,15 @@
 
 A collection of my solutions to LeetCode problems, organized by problem number.
 
+## Solutions
+
+| #                                                                             | Title                                                                                                                      | Difficulty | Topics                                   |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------------------------------- |
+| [1](problems/0001-two-sum/solution.py)                                        | [Two Sum](problems/0001-two-sum/solution.py)                                                                               | Easy       | Array, Hash Table                        |
+| [2](problems/0002-add-two-numbers/solution.py)                                | [Add Two Numbers](problems/0002-add-two-numbers/solution.py)                                                               | Medium     | Linked List, Math, Recursion             |
+| [3](problems/0003-longest-substring-without-repeating-characters/solution.py) | [Longest Substring Without Repeating Characters](problems/0003-longest-substring-without-repeating-characters/solution.py) | Medium     | Hash Table, String, Sliding Window       |
+| [4](problems/0004-median-of-two-sorted-arrays/solution.py)                    | [Median of Two Sorted Arrays](problems/0004-median-of-two-sorted-arrays/solution.py)                                       | Hard       | Array, Binary Search, Divide and Conquer |
+
 ## Structure
 
 ```text
@@ -34,15 +43,6 @@ These classes include helper methods:
 
 The repository is configured to make `common` importable anywhere if you have
 installed it in editable mode via `pip install -e .`.
-
-## Solutions
-
-| #                                              | Title                                                        | Difficulty | Topics                       |
-| ---------------------------------------------- | ------------------------------------------------------------ | ---------- | ---------------------------- |
-| [1](problems/0001-two-sum/solution.py)         | [Two Sum](problems/0001-two-sum/solution.py)                 | Easy       | Array, Hash Table            |
-| [2](problems/0002-add-two-numbers/solution.py) | [Add Two Numbers](problems/0002-add-two-numbers/solution.py) | Medium     | Linked List, Math, Recursion |
-| [3](problems/0003-longest-substring-without-repeating-characters/solution.py) | [Longest Substring Without Repeating Characters](problems/0003-longest-substring-without-repeating-characters/solution.py) | Medium | Hash Table, String, Sliding Window |
-| [4](problems/0004-median-of-two-sorted-arrays/solution.py) | [Median of Two Sorted Arrays](problems/0004-median-of-two-sorted-arrays/solution.py) | Hard | Array, Binary Search, Divide and Conquer |
 
 ## Adding a New Problem
 
