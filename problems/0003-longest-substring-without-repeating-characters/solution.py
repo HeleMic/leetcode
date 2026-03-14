@@ -18,20 +18,9 @@ class Solution:
 
 
 if __name__ == "__main__":
-    test_cases = (
-        ("abcabcbb", 3),
-        ("bbbbb", 1),
-        ("pwwkew", 3),
-    )
+    import sys
+    from pathlib import Path
+    sys.path.append(str(Path(__file__).parent.parent.parent))
+    from cli import COMMANDS
+    COMMANDS["test"]([Path(__file__).parent.name.split("-")[0]])
 
-    solution = Solution()
-
-    for tc_index, tc in enumerate(test_cases):
-        print("====================================================================================")
-        print(f"Running test case #{tc_index + 1} with value \"{tc[0]}\" and expected output \"{tc[1]}\"")
-        print("====================================================================================")
-        print()
-        assert solution.lengthOfLongestSubstring(tc[0]) == tc[1]
-        print()
-
-    print("All test cases passed!")

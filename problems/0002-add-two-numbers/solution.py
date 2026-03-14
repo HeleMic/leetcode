@@ -21,11 +21,9 @@ class Solution:
 
 
 if __name__ == "__main__":
-    solution = Solution()
-    solution1 = solution.addTwoNumbers(ListNode.from_list([2, 4, 3]), ListNode.from_list([5, 6, 4]))
-    solution2 = solution.addTwoNumbers(ListNode.from_list([0]), ListNode.from_list([0]))
-    solution3 = solution.addTwoNumbers(ListNode.from_list([9, 9, 9, 9, 9, 9, 9]), ListNode.from_list([9, 9, 9, 9]))
-    assert solution1 and solution1.to_list() == [7, 0, 8]
-    assert solution2 and solution2.to_list() == [0]
-    assert solution3 and solution3.to_list() == [8, 9, 9, 9, 0, 0, 0, 1]
-    print("All test cases passed!")
+    import sys
+    from pathlib import Path
+    sys.path.append(str(Path(__file__).parent.parent.parent))
+    from cli import COMMANDS
+    COMMANDS["test"]([Path(__file__).parent.name.split("-")[0]])
+

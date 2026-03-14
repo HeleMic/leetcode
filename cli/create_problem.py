@@ -222,9 +222,11 @@ def _make_solution(method: str, params: list, ret_type: str) -> str:
         "",
         "",
         'if __name__ == "__main__":',
-        "    solution = Solution()",
-        "    # TODO: add assertions",
-        '    print("All test cases passed!")',
+        "    import sys",
+        "    from pathlib import Path",
+        '    sys.path.append(str(Path(__file__).parent.parent.parent))',
+        "    from leet import COMMANDS",
+        '    COMMANDS["test"]([Path(__file__).parent.name.split("-")[0]])',
     ]
     return "\n".join(lines) + "\n"
 

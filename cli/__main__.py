@@ -20,14 +20,9 @@ if str(_repo_root) not in sys.path:
     sys.path.insert(0, str(_repo_root))
 
 from cli._utils import _die           # noqa: E402
-from cli import create_problem        # noqa: E402
-from cli import test as _test         # noqa: E402
+from cli import COMMANDS              # noqa: E402
 
-COMMANDS = {
-    "create:problem": create_problem.run,
-    "test":           _test.run,
-    "help":           lambda _: print(__doc__),
-}
+COMMANDS["help"] = lambda _: print(__doc__)
 
 
 def main() -> None:
