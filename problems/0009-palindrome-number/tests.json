@@ -1,0 +1,55 @@
+{
+  "method": "isPalindrome",
+  "cases": [
+    {
+      "label": "Example 1 — palindrome",
+      "args": [121],
+      "expected": true
+    },
+    {
+      "label": "Example 2 — negative number",
+      "args": [-121],
+      "expected": false
+    },
+    {
+      "label": "Example 3 — trailing zero",
+      "args": [10],
+      "expected": false
+    },
+    {
+      "label": "Zero is a palindrome",
+      "args": [0],
+      "expected": true
+    },
+    {
+      "label": "Single digit",
+      "args": [7],
+      "expected": true
+    },
+    {
+      "label": "Even-length palindrome",
+      "args": [1221],
+      "expected": true
+    },
+    {
+      "label": "Even-length non-palindrome",
+      "args": [1231],
+      "expected": false
+    },
+    {
+      "label": "Large palindrome",
+      "args": [1000021000001],
+      "expected": false
+    },
+    {
+      "label": "All same digits",
+      "args": [9999],
+      "expected": true
+    },
+    {
+      "label": "Negative with absolute palindrome",
+      "args": [-1221],
+      "expected": false
+    }
+  ]
+}
