@@ -1,0 +1,55 @@
+{
+  "method": "maxArea",
+  "cases": [
+    {
+      "label": "Example 1",
+      "args": [[1, 8, 6, 2, 5, 4, 8, 3, 7]],
+      "expected": 49
+    },
+    {
+      "label": "Example 2 — minimum input",
+      "args": [[1, 1]],
+      "expected": 1
+    },
+    {
+      "label": "All same height",
+      "args": [[5, 5, 5, 5, 5]],
+      "expected": 20
+    },
+    {
+      "label": "Monotonically increasing",
+      "args": [[1, 2, 3, 4, 5, 6]],
+      "expected": 9
+    },
+    {
+      "label": "Monotonically decreasing",
+      "args": [[6, 5, 4, 3, 2, 1]],
+      "expected": 9
+    },
+    {
+      "label": "Tall walls at both ends",
+      "args": [[10, 1, 1, 1, 1, 10]],
+      "expected": 50
+    },
+    {
+      "label": "Best pair not at edges",
+      "args": [[3, 9, 3, 3, 9, 3]],
+      "expected": 27
+    },
+    {
+      "label": "One wall has zero height",
+      "args": [[0, 5]],
+      "expected": 0
+    },
+    {
+      "label": "Very tall middle wall — constrained by ends",
+      "args": [[1, 100, 1]],
+      "expected": 2
+    },
+    {
+      "label": "Large heights",
+      "args": [[1000, 1000]],
+      "expected": 1000
+    }
+  ]
+}
