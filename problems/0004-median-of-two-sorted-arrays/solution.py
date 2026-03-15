@@ -33,15 +33,18 @@ class Solution:
 
         middle = len(merged) // 2
 
-        values = [merged[middle - 1], merged[middle]] if len(merged) % 2 == 0 else [merged[middle]]
+        values = (
+            [merged[middle - 1], merged[middle]]
+            if len(merged) % 2 == 0
+            else [merged[middle]]
+        )
         return sum(values) / len(values)
 
 
-
 if __name__ == "__main__":
-    import sys
+    import subprocess
     from pathlib import Path
-    sys.path.append(str(Path(__file__).parent.parent.parent))
-    from cli import COMMANDS
-    COMMANDS["test"]([Path(__file__).parent.name.split("-")[0]])
 
+    executablePath = Path(__file__).parent.parent.parent / "leet"
+    testNumber = Path(__file__).parent.name.split("-")[0]
+    subprocess.run(["python3", executablePath, "test", testNumber])

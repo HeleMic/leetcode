@@ -11,11 +11,10 @@ class Solution:
 
         reversedNumber = 0
         while x > 0:
-            lastDigit = x % 10
-            x //= 10
             if reversedNumber > 214748364:
                 return 0
-            reversedNumber = reversedNumber * 10 + lastDigit
+            reversedNumber = (reversedNumber * 10) + (x % 10)
+            x //= 10
 
         return reversedNumber * mul
 

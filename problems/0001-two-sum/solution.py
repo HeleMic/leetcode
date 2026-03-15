@@ -11,10 +11,11 @@ class Solution:
             values_map[nums[index]] = index
         return []
 
-if __name__ == "__main__":
-    import sys
-    from pathlib import Path
-    sys.path.append(str(Path(__file__).parent.parent.parent))
-    from cli import COMMANDS
-    COMMANDS["test"]([Path(__file__).parent.name.split("-")[0]])
 
+if __name__ == "__main__":
+    import subprocess
+    from pathlib import Path
+
+    executablePath = Path(__file__).parent.parent.parent / "leet"
+    testNumber = Path(__file__).parent.name.split("-")[0]
+    subprocess.run(["python3", executablePath, "test", testNumber])

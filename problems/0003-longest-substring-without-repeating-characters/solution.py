@@ -1,4 +1,3 @@
-
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         values = {}
@@ -18,9 +17,9 @@ class Solution:
 
 
 if __name__ == "__main__":
-    import sys
+    import subprocess
     from pathlib import Path
-    sys.path.append(str(Path(__file__).parent.parent.parent))
-    from cli import COMMANDS
-    COMMANDS["test"]([Path(__file__).parent.name.split("-")[0]])
 
+    executablePath = Path(__file__).parent.parent.parent / "leet"
+    testNumber = Path(__file__).parent.name.split("-")[0]
+    subprocess.run(["python3", executablePath, "test", testNumber])

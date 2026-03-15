@@ -45,6 +45,7 @@ COMMON_TYPES = {"ListNode"}
 
 # ── HTML → Markdown ───────────────────────────────────────────────────────────
 
+
 class _HTMLStripper(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -88,11 +89,14 @@ def _html_to_md(html: str) -> str:
 
 # ── LeetCode API ──────────────────────────────────────────────────────────────
 
+
 def _fetch_problem(slug: str) -> dict:
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
-    payload = json.dumps({"query": GRAPHQL_QUERY, "variables": {"titleSlug": slug}}).encode()
+    payload = json.dumps(
+        {"query": GRAPHQL_QUERY, "variables": {"titleSlug": slug}}
+    ).encode()
     req = urllib.request.Request(
         GRAPHQL_URL,
         data=payload,
@@ -121,6 +125,7 @@ def _slug_from_url(url: str) -> str:
 
 
 # ── Type utilities ────────────────────────────────────────────────────────────
+
 
 def _py_type(lc: str) -> str:
     return TYPE_MAP.get(lc, "Any")
@@ -152,6 +157,7 @@ def _build_imports(params, ret_type):
 
 # ── File generators ───────────────────────────────────────────────────────────
 
+
 def _make_readme(q: dict, slug: str) -> str:
     html = q["content"]
     desc_html = re.split(r'<p><strong class="example">', html)[0]
@@ -162,7 +168,9 @@ def _make_readme(q: dict, slug: str) -> str:
     for i, block in enumerate(example_blocks, 1):
         text = re.sub(r"<[^>]+>", "", block).strip()
         lines = [ln.rstrip() for ln in text.splitlines()]
-        examples_parts.append(f"**Example {i}:**\n\n```text\n" + "\n".join(lines) + "\n```")
+        examples_parts.append(
+            f"**Example {i}:**\n\n```text\n" + "\n".join(lines) + "\n```"
+        )
 
     c_match = re.search(
         r"<p><strong>Constraints:</strong></p>(.*?)(?:<p><strong>|$)", html, re.DOTALL
@@ -178,25 +186,27 @@ def _make_readme(q: dict, slug: str) -> str:
     topics = ", ".join(t["name"] for t in q["topicTags"])
     url = f"https://leetcode.com/problems/{slug}/"
     return (
-        "\n".join([
-            f"# {q['questionId']}. {q['title']}",
-            "",
-            f"**Link:** <{url}>  ",
-            f"**Difficulty:** {q['difficulty']}  ",
-            f"**Topics:** {topics}",
-            "",
-            "## Description",
-            "",
-            description,
-            "",
-            "## Examples",
-            "",
-            "\n\n".join(examples_parts),
-            "",
-            "## Constraints",
-            "",
-            constraints_md,
-        ])
+        "\n".join(
+            [
+                f"# {q['questionId']}. {q['title']}",
+                "",
+                f"**Link:** <{url}>  ",
+                f"**Difficulty:** {q['difficulty']}  ",
+                f"**Topics:** {topics}",
+                "",
+                "## Description",
+                "",
+                description,
+                "",
+                "## Examples",
+                "",
+                "\n\n".join(examples_parts),
+                "",
+                "## Constraints",
+                "",
+                constraints_md,
+            ]
+        )
         + "\n"
     )
 
@@ -215,24 +225,23 @@ def _make_solution(method: str, params: list, ret_type: str) -> str:
         "",
         "class Solution:",
         f"    def {method}(self, {param_str}) -> {ret_type}:",
-        '        """',
-        "        Time:  O(?)",
-        "        Space: O(?)",
-        '        """',
         "        pass",
         "",
         "",
         'if __name__ == "__main__":',
-        "    import sys",
+        "    import subprocess",
         "    from pathlib import Path",
-        '    sys.path.append(str(Path(__file__).parent.parent.parent))',
-        "    from leet import COMMANDS",
-        '    COMMANDS["test"]([Path(__file__).parent.name.split("-")[0]])',
+        "",
+        '    executablePath = Path(__file__).parent.parent.parent / "leet"',
+        '    testNumber = Path(__file__).parent.name.split("-")[0]',
+        '    subprocess.run(["python3", executablePath, "test", testNumber])',
     ]
     return "\n".join(lines) + "\n"
 
 
-def _make_tests_json(method: str, example_list: list, params: list, ret_type: str) -> str:
+def _make_tests_json(
+    method: str, example_list: list, params: list, ret_type: str
+) -> str:
     raw_param_types = [p["type"] for p in params]
     py_param_types = [_py_type(t) for t in raw_param_types]
     needs_coerce = any(ct in t for t in py_param_types for ct in COMMON_TYPES)
@@ -295,7 +304,9 @@ def _update_root_readme(q: dict, folder_name: str) -> None:
 
     # Calculate column widths from all rows (including header)
     all_rows = [header_cells] + [cells for _, cells in data_rows]
-    col_widths = [max(len(row[j]) for row in all_rows) for j in range(len(header_cells))]
+    col_widths = [
+        max(len(row[j]) for row in all_rows) for j in range(len(header_cells))
+    ]
 
     def fmt_row(cells: list[str]) -> str:
         parts = [f" {cells[j].ljust(col_widths[j])} " for j in range(len(cells))]
@@ -303,10 +314,9 @@ def _update_root_readme(q: dict, folder_name: str) -> None:
 
     sep_row = "|" + "|".join(f" {'-' * w} " for w in col_widths) + "|"
 
-    formatted = (
-        [fmt_row(header_cells), sep_row]
-        + [fmt_row(cells) for _, cells in data_rows]
-    )
+    formatted = [fmt_row(header_cells), sep_row] + [
+        fmt_row(cells) for _, cells in data_rows
+    ]
     lines[header_idx:end_idx] = formatted
 
     ROOT_README.write_text("\n".join(lines) + "\n")
@@ -314,6 +324,7 @@ def _update_root_readme(q: dict, folder_name: str) -> None:
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
+
 
 def run(args: list[str]) -> None:
     if not args:
@@ -346,13 +357,17 @@ def run(args: list[str]) -> None:
         _make_tests_json(method, q["exampleTestcaseList"], params, ret_type)
     )
     n = len(q["exampleTestcaseList"])
-    print(f"  Created tests.json   ({n} example case{'s' if n != 1 else ''} — fill in 'expected')")
+    print(
+        f"  Created tests.json   ({n} example case{'s' if n != 1 else ''} — fill in 'expected')"
+    )
 
     _update_root_readme(q, folder_name)
 
     # Format the READMEs
     try:
-        subprocess.run(["npx", "markdownlint-cli", "--fix", str(problem_dir / "README.md")])
+        subprocess.run(
+            ["npx", "markdownlint-cli", "--fix", str(problem_dir / "README.md")]
+        )
         subprocess.run(["npx", "markdownlint-cli", "--fix", str(ROOT_README)])
     except Exception:
         pass
