@@ -261,7 +261,7 @@ def _make_tests_json(
     if needs_coerce:
         data["param_types"] = raw_param_types
     if needs_serialize:
-        data["return_type"] = re.search(r"(\w+)$", ret_type).group(1)
+        data["return_type"] = re.search(r"(\w+)\]?$", ret_type).group(1)
     data["cases"] = cases
     return json.dumps(data, indent=2) + "\n"
 
