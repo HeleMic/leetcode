@@ -1,0 +1,55 @@
+{
+  "method": "longestCommonPrefix",
+  "cases": [
+    {
+      "label": "Example 1 — common prefix 'fl'",
+      "args": [["flower", "flow", "flight"]],
+      "expected": "fl"
+    },
+    {
+      "label": "Example 2 — no common prefix",
+      "args": [["dog", "racecar", "car"]],
+      "expected": ""
+    },
+    {
+      "label": "Single string",
+      "args": [["alone"]],
+      "expected": "alone"
+    },
+    {
+      "label": "All identical strings",
+      "args": [["abc", "abc", "abc"]],
+      "expected": "abc"
+    },
+    {
+      "label": "One empty string in list",
+      "args": [["abc", "", "abcd"]],
+      "expected": ""
+    },
+    {
+      "label": "Prefix is the shortest string",
+      "args": [["ab", "abc", "abcd"]],
+      "expected": "ab"
+    },
+    {
+      "label": "Common prefix of length 1",
+      "args": [["apple", "ape", "april"]],
+      "expected": "ap"
+    },
+    {
+      "label": "Two strings, one is prefix of the other",
+      "args": [["hello", "helloworld"]],
+      "expected": "hello"
+    },
+    {
+      "label": "First character differs",
+      "args": [["xyz", "abc", "def"]],
+      "expected": ""
+    },
+    {
+      "label": "Large common prefix",
+      "args": [["interview", "interchange", "internal", "interest"]],
+      "expected": "inter"
+    }
+  ]
+}

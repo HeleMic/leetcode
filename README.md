@@ -13,6 +13,7 @@ A collection of my solutions to LeetCode problems, organized by problem number.
 | [7](problems/0007-reverse-integer/solution.py)                                | [Reverse Integer](problems/0007-reverse-integer/solution.py)                                                               | Medium     | Math                                     |
 | [9](problems/0009-palindrome-number/solution.py)                              | [Palindrome Number](problems/0009-palindrome-number/solution.py)                                                           | Easy       | Math                                     |
 | [11](problems/0011-container-with-most-water/solution.py)                     | [Container With Most Water](problems/0011-container-with-most-water/solution.py)                                           | Medium     | Array, Two Pointers, Greedy              |
+| [14](problems/0014-longest-common-prefix/solution.py)                         | [Longest Common Prefix](problems/0014-longest-common-prefix/solution.py)                                                   | Easy       | Array, String, Trie                      |
 
 ## Structure
 
