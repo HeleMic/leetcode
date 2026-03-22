@@ -1,0 +1,84 @@
+{
+  "method": "letterCombinations",
+  "normalizer": "sort",
+  "cases": [
+    {
+      "label": "Example 1 — two digits",
+      "args": ["23"],
+      "expected": ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+    },
+    {
+      "label": "Example 2 — empty input",
+      "args": [""],
+      "expected": []
+    },
+    {
+      "label": "Example 3 — repeated digit",
+      "args": ["22"],
+      "expected": ["aa", "ab", "ac", "ba", "bb", "bc", "ca", "cb", "cc"]
+    },
+    {
+      "label": "Single digit 2",
+      "args": ["2"],
+      "expected": ["a", "b", "c"]
+    },
+    {
+      "label": "Single digit 9 — four letters",
+      "args": ["9"],
+      "expected": ["w", "x", "y", "z"]
+    },
+    {
+      "label": "Single digit 7 — four letters",
+      "args": ["7"],
+      "expected": ["p", "q", "r", "s"]
+    },
+    {
+      "label": "Three digits",
+      "args": ["234"],
+      "expected": [
+        "adg",
+        "adh",
+        "adi",
+        "aeg",
+        "aeh",
+        "aei",
+        "afg",
+        "afh",
+        "afi",
+        "bdg",
+        "bdh",
+        "bdi",
+        "beg",
+        "beh",
+        "bei",
+        "bfg",
+        "bfh",
+        "bfi",
+        "cdg",
+        "cdh",
+        "cdi",
+        "ceg",
+        "ceh",
+        "cei",
+        "cfg",
+        "cfh",
+        "cfi"
+      ]
+    },
+    {
+      "label": "Digits with 4-letter keys",
+      "args": ["79"],
+      "expected": ["pw", "px", "py", "pz", "qw", "qx", "qy", "qz", "rw", "rx", "ry", "rz", "sw", "sx", "sy", "sz"]
+    },
+    {
+      "label": "All same 4-letter digit",
+      "args": ["99"],
+      "expected": ["ww", "wx", "wy", "wz", "xw", "xx", "xy", "xz", "yw", "yx", "yy", "yz", "zw", "zx", "zy", "zz"]
+    },
+    {
+      "label": "Mixed 3-letter and 4-letter digit",
+      "args": ["29"],
+      "expected": ["aw", "ax", "ay", "az", "bw", "bx", "by", "bz", "cw", "cx", "cy", "cz"]
+    }
+  ]
+}

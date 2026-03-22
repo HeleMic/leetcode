@@ -14,6 +14,7 @@ A collection of my solutions to LeetCode problems, organized by problem number.
 | [9](problems/0009-palindrome-number/solution.py)                              | [Palindrome Number](problems/0009-palindrome-number/solution.py)                                                           | Easy       | Math                                     |
 | [11](problems/0011-container-with-most-water/solution.py)                     | [Container With Most Water](problems/0011-container-with-most-water/solution.py)                                           | Medium     | Array, Two Pointers, Greedy              |
 | [14](problems/0014-longest-common-prefix/solution.py)                         | [Longest Common Prefix](problems/0014-longest-common-prefix/solution.py)                                                   | Easy       | Array, String, Trie                      |
+| [17](problems/0017-letter-combinations-of-a-phone-number/solution.py)         | [Letter Combinations of a Phone Number](problems/0017-letter-combinations-of-a-phone-number/solution.py)                   | Medium     | Hash Table, String, Backtracking         |
 
 ## Structure
 
